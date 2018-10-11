@@ -30,3 +30,34 @@
 // }
 
 // console.log(oneAway("pale","plea"));
+
+const oneAway = (str1, str2) => {
+    if(Math.abs(str1.length - str2.length) > 1) return false;
+    let j = 0;
+    let dc = 0;
+    let itr,chk;
+    let flag = 0;
+
+    if(str1.length !== str2.length) flag = 1;
+
+    if( str1.length > str2.length){
+        itr = str2;
+        chk = str1;
+    } else {
+        itr = str1;
+        chk = str2;
+    }
+
+    for(let i = 0; i < itr.length; i++) {
+        const el = itr[i];
+        if(el !== chk[j]){
+            dc += 1;
+            if(flag) j+=1
+        }
+        if(dc > 1) return false;
+        j+=1;
+    }
+    return true;
+}
+
+console.log(oneAway("pale","bale"));
