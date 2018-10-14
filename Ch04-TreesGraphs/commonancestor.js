@@ -44,12 +44,17 @@ const commonAncestor = (n1, n2) => {
     let cA = n1.parent;
 
     let goUp = (n1,n2) => {
-        if(!n1) cA = null;
+        console.log("in goup");
+        
+        if(!n1.parent) {
+            // cA = null;
+            return;
+        }
         if(n1.parent.left === n1){
-            if(isChild(n1.parent.right,n2)) cA = n1.parent.right;
+            if(isChild(n1.parent.right,n2)) cA = n1.parent;
         }
         if(n1.parent.right === n1){
-            if (isChild(n1.parent.left, n2)) cA = n1.parent.left;
+            if (isChild(n1.parent.left, n2)) cA = n1.parent;
         }
 
         goUp(n1.parent, n2);
@@ -62,7 +67,7 @@ const commonAncestor = (n1, n2) => {
 const isChild = (parent, child) => {
     let found = false;
     const dfs = (parent,target) => {
-        if(!parent) return;
+        // if(!parent) return;
         if(parent === target) found = true;
 
         !found && parent.left && dfs(parent.left, target);
@@ -72,5 +77,5 @@ const isChild = (parent, child) => {
     return found;
 }
 
-console.log(commonAncestor(four, five));
+console.log(commonAncestor(two, one));
 
