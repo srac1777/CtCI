@@ -22,7 +22,8 @@ const removeDups = head => {
 
 const deleteNode = (curr, head) => {
     // console.log(curr);
-    // console.log(head)/;
+    // console.log(head);
+    
     
     let prev = head;
     let now = head.next;
