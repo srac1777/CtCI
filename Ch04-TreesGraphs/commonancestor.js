@@ -37,45 +37,57 @@ six.parent = eight;
 eight.right = seven;
 seven.parent = eight;
 
-const commonAncestor = (n1, n2) => {
-    if(isChild(n1,n2)) return n1;
-    if(isChild(n2,n1)) return n2;
 
-    let cA = n1.parent;
+const findNode = (node, target) => {
+    if(!node) return null;
+    if(node === target) return node; 
+    foundL = findNode(node.left);
+    foundR = findNode(node.right);
 
-    let goUp = (n1,n2) => {
-        console.log("in goup");
+    
+}
+
+// const commonAncestor = (n1, n2) => {
+//     if(isChild(n1,n2)) return n1;
+//     if(isChild(n2,n1)) return n2;
+
+//     let cA = n1.parent;
+
+//     let goUp = (n1,n2) => {
+//         console.log("in goup");
         
-        if(!n1.parent) {
-            // cA = null;
-            return;
-        }
-        if(n1.parent.left === n1){
-            if(isChild(n1.parent.right,n2)) cA = n1.parent;
-        }
-        if(n1.parent.right === n1){
-            if (isChild(n1.parent.left, n2)) cA = n1.parent;
-        }
+//         if(!n1.parent) {
+//             // cA = null;
+//             return;
+//         }
+//         if(n1.parent.left === n1){
+//             if(isChild(n1.parent.right,n2)) cA = n1.parent;
+//         }
+//         if(n1.parent.right === n1){
+//             if (isChild(n1.parent.left, n2)) cA = n1.parent;
+//         }
 
-        goUp(n1.parent, n2);
-    }
+//         goUp(n1.parent, n2);
+//     }
 
-    goUp(n1,n2);
-    return cA;
-}
+//     goUp(n1,n2);
+//     return cA;
+// }
 
-const isChild = (parent, child) => {
-    let found = false;
-    const dfs = (parent,target) => {
-        // if(!parent) return;
-        if(parent === target) found = true;
+// const isChild = (parent, child) => {
+//     let found = false;
+//     const dfs = (parent,target) => {
+//         // if(!parent) return;
+//         if(parent === target) found = true;
 
-        !found && parent.left && dfs(parent.left, target);
-        !found && parent.right && dfs(parent.right, target);
-    }
-    dfs(parent, child);
-    return found;
-}
+//         !found && parent.left && dfs(parent.left, target);
+//         !found && parent.right && dfs(parent.right, target);
+//     }
+//     dfs(parent, child);
+//     return found;
+// }
 
-console.log(commonAncestor(two, one));
+// console.log(commonAncestor(two, one));
+
+console.log(findNode(root, seven));
 

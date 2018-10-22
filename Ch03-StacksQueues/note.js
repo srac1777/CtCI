@@ -1,1 +1,1 @@
-// done on whiteboard. Pretty straightforward.
+// done on whiteboard. Pretty straightfrward.
